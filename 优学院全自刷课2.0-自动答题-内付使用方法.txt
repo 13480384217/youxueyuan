@@ -80,11 +80,14 @@ function bindEvent() {
         document.querySelector('.operating-area').appendChild(startBtn);
         // 如果页面有视频，且视频是正在观看状态，需要停止
         if (document.querySelector(".file-media")) {
-            if (document.querySelector('.mejs__button.mejs__playpause-button button').getAttribute('title') != 'Play') {
-                document.querySelector(".mejs__speed-selector-input").value = 1.50;
-                document.querySelector(".mejs__speed-selector-input").click();
-                document.querySelector('.mejs__button.mejs__speed-button button').innerText = '1.50x'
-                document.querySelector('.mejs__button.mejs__playpause-button button').click();
+            let allVideos = document.querySelectorAll(".file-media");
+            for (let i = 0; i < allVideos.length; i++) {
+                if (document.querySelectorAll('.mejs__button.mejs__playpause-button button')[i].getAttribute('title') != 'Play') {
+                    document.querySelectorAll(".mejs__speed-selector-input")[i].value = 1.50;
+                    document.querySelectorAll(".mejs__speed-selector-input")[i].click();
+                    document.querySelectorAll('.mejs__button.mejs__speed-button button')[i].innerText = '1.50x'
+                    document.querySelectorAll('.mejs__button.mejs__playpause-button button')[i].click();
+                }
             }
         }
         clearInterval(window.myVar);
@@ -119,23 +122,29 @@ function logic() {
 
     // 如果页面中有视频 
     if (document.querySelector(".file-media")) {
-        // 已经看完了，跳到到下一页，由于判断是否刷完的逻辑有些复杂， 故不做判断，可以自己手动返回
-        if (document.querySelector("[data-bind='text: $root.i18nMessageText().finished']")) {
-            document.querySelector('.next-page-btn.cursor').click();
-            console.log(document.querySelector('.course-title.small').innerText + '  >>> 看完了~');
-
-        }
-        // 还没有看完，需要将本视频看完
-        else {
-            // 如果本视频不是正在观看状态，则高倍速开始播放
-            if (document.querySelector('.mejs__button.mejs__playpause-button button').getAttribute('title') == 'Play') {
-                console.log('火力全开!目标：' + document.querySelector('.course-title.small').innerText);
-
-                document.querySelector(".mejs__speed-selector-input").value = 8.00;
-                document.querySelector(".mejs__speed-selector-input").click();
-                document.querySelector('.mejs__button.mejs__speed-button button').innerText = '8.00x'
-                document.querySelector('.mejs__button.mejs__playpause-button button').click();
+        let allVideos = document.querySelectorAll(".file-media");
+        let i = 0;
+        for (; i < allVideos.length; i++) {
+            // 已经看完了，跳到到下一页，由于判断是否刷完的逻辑有些复杂， 故不做判断，可以自己手动返回
+            if (document.querySelectorAll("[data-bind='text: $root.i18nMessageText().finished']")[i]) {
+                console.log(document.querySelector('.course-title.small').innerText + '  >>> 看完了~');
             }
+            // 还没有看完，需要将本视频看完
+            else {
+                // 如果本视频不是正在观看状态，则高倍速开始播放
+                if (document.querySelectorAll('.mejs__button.mejs__playpause-button button')[i].getAttribute('title') == 'Play') {
+                    console.log('火力全开!目标：' + document.querySelector('.course-title.small').innerText);
+
+                    document.querySelectorAll(".mejs__speed-selector-input")[i * 4].value = 8.00;
+                    document.querySelectorAll(".mejs__speed-selector-input")[i * 4].click();
+                    document.querySelectorAll('.mejs__button.mejs__speed-button button')[i].innerText = '8.00x'
+                    document.querySelectorAll('.mejs__button.mejs__playpause-button button')[i].click();
+                }
+                break;
+            }
+        }
+        if (i == allVideos.length) {
+            document.querySelector('.next-page-btn.cursor').click();
         }
     }
     // 如果是做题界面
