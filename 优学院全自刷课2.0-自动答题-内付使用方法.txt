@@ -104,7 +104,12 @@ function logic() {
         }
         // 提示框
         else if (document.querySelector('.modal.fade.in').getAttribute('id') == 'alertModal') {
-            document.querySelectorAll("#alertModal .btn-hollow")[0].click();
+            if (document.querySelector("#alertModal .btn-hollow")) {
+                document.querySelector("#alertModal .btn-hollow").click();
+            }
+            else {
+                document.querySelector("#alertModal .btn-submit").click();
+            }
             console.log('干掉提示框~');
         }
         return;
