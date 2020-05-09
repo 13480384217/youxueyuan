@@ -220,6 +220,11 @@ function autoAnswer() {
                         console.log('选择了 D');
                         break;
                     }
+                    case 'E': {
+                        allBox[4].click();
+                        console.log('选择了 E');
+                        break;
+                    }
                 }
             }
         }
@@ -245,6 +250,11 @@ function autoAnswer() {
                 case 'D': {
                     allBox[3].click();
                     console.log('选择了 D');
+                    break;
+                }
+                case 'E': {
+                    allBox[4].click();
+                    console.log('选择了 E');
                     break;
                 }
             }
