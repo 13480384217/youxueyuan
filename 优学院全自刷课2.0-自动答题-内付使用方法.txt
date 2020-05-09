@@ -269,6 +269,7 @@ function autoAnswer() {
             }
         }
     }
-
+    // 真正提交
+    document.querySelector('.question-operation-area button').click();
 
 }
