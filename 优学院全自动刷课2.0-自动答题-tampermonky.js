@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         优学院刷课
 // @namespace    http://tampermonkey.net/
-// @version      2.0.0
+// @version      2.1.0
 // @description  优学院自动8倍速观看视频,自动答题
 // @author       xiaobu
 // @match        ua.ulearning.cn/learnCourse/learnCourse.html?*
