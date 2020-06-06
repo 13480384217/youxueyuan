@@ -4,7 +4,8 @@
 // @version      2.0.0
 // @description  优学院自动8倍速观看视频,自动答题
 // @author       xiaobu
-// @match        https://ua.ulearning.cn/learnCourse/learnCourse.html?*
+// @match        ua.ulearning.cn/learnCourse/learnCourse.html?*
+// @match        ua.ulearning.cn//learnCourse/learnCourse.html?*
 // @downloadURL  https://github.com/xiaobucvg/youxueyuan/blob/master/%E4%BC%98%E5%AD%A6%E9%99%A2%E5%85%A8%E8%87%AA%E5%8A%A8%E5%88%B7%E8%AF%BE2.0-%E8%87%AA%E5%8A%A8%E7%AD%94%E9%A2%98-tampermonky.js
 // ==/UserScript==
 
@@ -83,7 +84,7 @@
                 return;
             }
 
-            // 如果页面中有视频 
+            // 如果页面中有视频
             if ($(".file-media").length > 0) {
                 let $allVideos = $(".file-media");
                 let i = 0;
@@ -274,14 +275,14 @@
                 <div class="modal-info">
                     <h4>本次刷课出现了意外情况，请将本提示截图并联系作者！</h4>
                     <div class="content log-content" style="text-align:left">
-                    
+
                     </div>
                 </div>
 
                 <div class="modal-operation">
                     <button class="btn-submit log-close-btn" type="button">我明白了</button>
                 </div>
-                
+
             </div>
 
         </div>
